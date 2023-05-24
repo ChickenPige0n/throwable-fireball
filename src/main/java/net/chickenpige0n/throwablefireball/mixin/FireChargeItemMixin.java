@@ -1,7 +1,7 @@
-package net.fabricmc.example.mixin;
+package net.chickenpige0n.throwablefireball.mixin;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.SmallFireballEntity;
+import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.item.FireChargeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -38,9 +38,9 @@ public class FireChargeItemMixin extends Item {
             double y = -Math.sin(pitch);
             double z = Math.cos(yaw) * Math.cos(pitch);
 
-            SmallFireballEntity smallFireballEntity = new SmallFireballEntity(world, user, x, y, z);
-            smallFireballEntity.setPosition(smallFireballEntity.getX() + x, user.getBodyY(0.5) + 0.5 + y, smallFireballEntity.getZ() + z);
-            world.spawnEntity(smallFireballEntity);
+            FireballEntity fireballEntity = new FireballEntity(world, user, x, y, z, 1);
+            fireballEntity.setPosition(fireballEntity.getX() + x, user.getBodyY(0.5) + 0.5 + y, fireballEntity.getZ() + z);
+            world.spawnEntity(fireballEntity);
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
